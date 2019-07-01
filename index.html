@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Tor Robinson</title>
-		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto|Baloo+Chettan" rel="stylesheet">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 		<style>
 			html, body, div, span, applet, object, iframe,
@@ -50,14 +50,11 @@
 			*{
 				font-family: 'Maven Pro', sans-serif;
 			}
-			.oneliner{
+			.one-liner{
 				font-size: 23px;
 				margin-bottom: 14px;
 				margin-top: 20px;
 				line-height: 27px;
-			}
-			.oneliner.small{
-				font-size: 16px;
 			}
 			.highlight, a{
 				text-decoration: none;
@@ -110,17 +107,52 @@
 				box-shadow: 0px 10px 20px rgba(0, 115, 177, 0.2);
 				background-color: rgb(0, 115, 177);
 			}
+			.button.purple-gradient{
+				box-shadow: 0px 10px 20px rgba(71, 118, 230, 0.4);
+				background: linear-gradient(135deg,#4776e6,#8e54e9);
+			}
 			.button:hover{
 				opacity:1.0;
 			}
-		</style>
+			
+			.group-header{
+				font-weight: bold;
+				margin-top: 25px;
+				position: relative;
+				width: 100%;
+				margin-bottom: 4px;
+			}
+			.group-header .label{
+				width: 79px;
+				background-color: white;
+				margin: 0 auto;
+			}
+			.group-header:before{
+				content: "";
+				position: absolute;
+				left: 0px;
+				top: 9px;
+				display: inline-block;
+				height: 1px;
+				background-color: rgba(0, 0, 0, 0.2);
+				width: 100%;
+				z-index: -1;
+			}
+			.clunk-logo{
+				font-family: 'Baloo Chettan';
+				font-size: 30px;
+				margin-top: 3px;
+			}
+			</style>
 	</head>
 	<body>
 		<div id="center-container">
 			<h1>Tor Robinson</h1>
-			<p class="oneliner">I'm a developer from Edmonton who's into <br/> film, VR headsets, and Twin Peaks.</p>
+			<p class="one-liner">I'm a developer from Edmonton obsessed with <br/> film, VR, and Twin Peaks.</p>
 			
-			<!-- <p class="oneliner small">Here's a new app I made for keeping track of my work/home tasks: <br/> <a href="http://www.clunk.app" target="_blank">www.clunk.app</a></p>-->
+			<div class="group-header">
+				<div class="label">Social</div>
+			</div>
 			
 			<a class="button icon blue" target="_blank" href=mailto:tor.j.robinson@gmail.com?Subject=Hello">
 			  <i class="fas fa-envelope" data-fa-transform="grow-8 down-12"></i>
@@ -141,6 +173,15 @@
 			<a class="button icon darkblue" target="_blank" href="https://www.linkedin.com/in/torrobinson/">
 			  <i class="fab fa-linkedin-in" data-fa-transform="grow-8 down-11"></i>
 			</a>
+			
+			<div class="group-header">
+				<div class="label">Projects</div>
+			</div>
+			
+			<a class="button icon purple-gradient" target="_blank" href="https://www.clunk.app">
+			  <div class="clunk-logo">C</div>
+			</a>
+			
 		</div>
 	</body>
 </html>
