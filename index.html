@@ -3,6 +3,7 @@
 		<title>Tor Robinson</title>
 		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto|Baloo+Chettan" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/da70cafe30.js" crossorigin="anonymous"></script>
+
 		<style>
 
 			/* Start Reset */
@@ -418,10 +419,21 @@
 				align-items: center;
 			}
 
+			.tiltjs-float{
+				transform: translateZ(50px);
+			}
+
 			</style>
 	</head>
 	<body class="totally-center-children">
-		<div class="window">
+		<div class="window"
+			data-tilt
+			data-tilt-max="4"
+			data-tilt-speed="2000"
+			data-tilt-gyroscope
+			data-tole-easing="cubic-bezier(.03,.98,.52,.1)"
+			style="transform-style: preserve-3d; transform: perspective(1000px);"
+			>
 
 			<div class="window-header">
 				<div class="traffic-lights">
@@ -488,24 +500,25 @@
 					<div class="page" id="page-home">
 
 						<center>
-							<i class="fad fa-planet-ringed"
-							   style="
-							   			font-size: 120px;
+							<div class="tiltjs-float">
+								<i class="fad fa-planet-ringed"
+								   style="
+								   			font-size: 120px;
+											color: var(--pale-blue);
+											text-shadow: -3px 2px 5px rgba(117, 183, 244, 0.52);
+										 ">
+								</i>
+								<div style="
 										color: var(--pale-blue);
-										text-shadow: -3px 2px 5px rgba(117, 183, 244, 0.52);
-									 ">
-							</i>
-							<div style="
-									color: var(--pale-blue);
-									font-size: 33px;
-									font-weight: bold;
-									margin-top: 7px;
-									margin-bottom:20px;
-									text-shadow: -3px 2px 11px rgba(117, 183, 244, 0.42)
-								">
-								Tor Robinson
+										font-size: 33px;
+										font-weight: bold;
+										margin-top: 7px;
+										margin-bottom:20px;
+										text-shadow: -3px 2px 11px rgba(117, 183, 244, 0.42)
+									">
+									Tor Robinson
+								</div>
 							</div>
-
 							 <p style="line-height: 20px;">
 								 I'm a full-stack developer from Edmonton, Alberta. <br/>
 								 Obsessed with: Code, Film, VR, and Twin Peaks.
@@ -519,20 +532,20 @@
 						<div class="horizontally-center-children">
 
 							<div>
-								<div class="link">
+								<div class="link tiltjs-float">
 									<a target="_blank" href="https://www.clunk.app" style="color: var(--clunk); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
 										<div class="clunk-logo">C</div>
 									</a>
 								</div>
 
-								<div class="link">
+								<div class="link tiltjs-float">
 
 									<a target="_blank" href="https://github.com/torrobinson" style="color: var(--github); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
 										<i class="fab fa-fw fa-github"></i>
 									</a>
 								</div>
 
-								<div class="link">
+								<div class="link tiltjs-float">
 									<a target="_blank" href="https://stackoverflow.com/story/tor" style="color: var(--stackoverflow);     text-shadow: 0px 0px var(--link-blur-amount) rgba(244, 128, 36, 0.43);">
 										<i class="fab fa-fw fa-stack-overflow"></i>
 									</a>
@@ -548,19 +561,19 @@
 						<div class="horizontally-center-children">
 
 							<div>
-								<div class="link">
+								<div class="link tiltjs-float">
 									<a target="_blank" href="https://www.linkedin.com/in/torrobinson/" style="color: var(--linkedin); text-shadow: 0px 0px var(--link-blur-amount) rgba(0, 119, 181, 0.4);">
 										<i class="fab fa-fw fa-linkedin-in"></i>
 									</a>
 								</div>
 
-								<div class="link">
+								<div class="link tiltjs-float">
 									<a target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello" style="color: var(--black); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
 										<i class="fas fa-fw fa-envelope"></i>
 									</a>
 								</div>
 
-								<div class="link">
+								<div class="link tiltjs-float">
 									<a target="_blank" href="https://www.last.fm/user/torrobinson" style="color: var(--lastfm); text-shadow: 0px 0px var(--link-blur-amount) rgba(185, 0, 0, 0.25);">
 										<i class="fab fa-fw fa-lastfm"></i>
 									</a>
@@ -627,4 +640,8 @@
 
 		}, false);
 	</script>
+
+	<!-- tiltjs -->
+	<script src="vanilla-tilt.min.js"></script>
+
 </html>
