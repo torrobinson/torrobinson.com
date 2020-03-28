@@ -47,6 +47,7 @@
 				--light-grey: rgba(237,237,237,1.0);
 				--darker-grey: rgba(212,212,212,1.0);
 				--darkest-grey: rgba(200,200,200,1.0);
+				--black: #565656;
 
 				/* Opacities */
 				--darkened: rgba(0, 0, 0, 0.07);
@@ -86,17 +87,12 @@
 				font-family: 'Maven Pro', sans-serif;
 			}
 
-			body{
-				/* Totally the window*/
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
 
 			/* Window */
 			.window{
 				background-color: var(--window-border-color);
+
+				box-shadow: -3px 5px 20px 0px rgba(0, 0, 0, 0.07);
 
 				padding: var(--window-padding-vert) var(--window-padding-hor);
 				padding-bottom: 0px;
@@ -105,8 +101,6 @@
 				width: 600px;
 
 				user-select: none;
-
-				box-shadow: -5px 8px 20px rgba(0, 0, 0, 0.1);
 
 				z-index: 1;
 			}
@@ -276,6 +270,8 @@
 			    height: var(--toolbar-height);
 			    width: calc( 100% + var(--window-padding-hor) *2 - var(--toolbar-padding) - var(--toolbar-padding) );
 
+				color: var(--black);
+
 				background-color: var(--toolbar-color);
 
 				padding-left: var(--toolbar-padding);
@@ -363,18 +359,52 @@
 			}
 
 			.window .window-body .window-padded-content{
+				display: flex;
 				padding: var(--window-padding-hor);
+				min-height: 220;
+				color: var(--black);
+			}
+
+
+			/* Pages */
+			.page{
+				flex: auto;
+			}
+			.page a{
+				text-decoration: none;
+			}
+			.page a:hover{
+				text-decoration: underline;
+			}
+			.page .link{
+				font-size:20px;
+				display: block;
+			}
+
+			.page .link:not(:first-child){
+				margin-top: 17px;
 			}
 
 
 			.clunk-logo{
+				display: inline-block;
 				font-family: 'Baloo Chettan';
 				font-size: 30px;
-				margin-top: 3px;
+				margin-left: 0.1em;
+    			margin-right: 0.15em;
 			}
+
+			.totally-center-children{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
 			</style>
 	</head>
-	<body>
+	<body class="totally-center-children">
 		<div class="window">
 
 			<div class="window-header">
@@ -386,25 +416,25 @@
 
 				<div class="tab-holder">
 
-					<div class="tab">
+					<div class="tab active" id="home">
 						<div class="favicon">
 							<i class="fad fa-home-alt"></i>
 						</div>
 						Home
 					</div>
 
-					<div class="tab active">
+					<div class="tab" id="code">
 						<div class="favicon">
-							<i class="fad fa-tools"></i>
+							<i class="fad fa-code"></i>
 						</div>
-						Projects
+						Code
 					</div>
 
-					<div class="tab">
+					<div class="tab" id="contact">
 						<div class="favicon">
-							<i class="fad fa-rainbow"></i>
+							<i class="fad fa-envelope"></i>
 						</div>
-						LOL
+						Contact
 					</div>
 
 				</div>
@@ -427,7 +457,7 @@
 							<div class="secure">
 								<i class="fas fa-lock"></i>
 							</div>
-							http://www.torrobinson.com
+							<span class="url">https://www.torrobinson.com/home</span>
 						</div>
 					</div>
 				</div>
@@ -438,55 +468,87 @@
 
 					<!-- Actual content -->
 
-					<div class="">
-						I'm a full-stack developer from Edmonton, Canada.
-						Obsessed with: Film, VR, and Twin Peaks.
+					<!-- Home -->
+					<div class="page" id="page-home">
+
+						<center>
+							<i class="fad fa-planet-ringed"
+							   style="
+							   			font-size: 120px;
+										color: var(--pale-blue);
+										text-shadow: -3px 2px 5px rgba(117, 183, 244, 0.52);
+									 ">
+							</i>
+							<div style="
+									color: var(--pale-blue);
+									font-size: 33px;
+									font-weight: bold;
+									margin-top: 7px;
+									margin-bottom:20px;
+									text-shadow: -3px 2px 11px rgba(117, 183, 244, 0.42)
+								">
+								Tor Robinson
+							</div>
+
+							 <p style="line-height: 20px;">
+								 I'm a full-stack developer from Edmonton, Alberta. <br/>
+								 Obsessed with: Code, Film, VR, and Twin Peaks.
+							 </p>
+
+					 	</center>
 					</div>
 
+					<!-- Projects -->
+					<div class="page" id="page-code" style="display:none;">
+						<div class="totally-center-children">
 
-					<div>
-						<div class="">
-							<div class="label">Code:</div>
+							<div>
+								<div class="link" style="color: #9d00ff;">
+									<div class="clunk-logo">C</div>
+									<a target="_blank" href="https://www.clunk.app">
+										Clunk
+									</a>
+								</div>
+
+								<div class="link">
+									<i class="fab fa-fw fa-github"></i>
+									<a target="_blank" href="https://github.com/torrobinson">
+										Github
+									</a>
+								</div>
+
+								<div class="link" style="color: #f48024 !important;">
+									<i class="fab fa-fw fa-stack-overflow"></i>
+									<a target="_blank" href="https://stackoverflow.com/story/tor">
+									  Stack Overflow
+									</a>
+								</div>
+							</div>
+
 						</div>
-
-						<a class="button icon black" target="_blank" href="https://github.com/torrobinson">
-						  <i class="fab fa-github" data-fa-transform="grow-8 down-12"></i>
-						</a>
-
-						<a class="button icon orange" target="_blank" href="https://stackoverflow.com/story/tor">
-						  <i class="fab fa-stack-overflow" data-fa-transform="grow-8 down-10"></i>
-						</a>
 					</div>
 
-
-					<div>
-						<div class="">
-							<div class="label">Social:</div>
-						</div>
-
+					<!-- Contact -->
+					<div class="page" id="page-contact" style="display:none;">
 						<a class="button icon darkblue" target="_blank" href="https://www.linkedin.com/in/torrobinson/">
-							  <i class="fab fa-linkedin-in" data-fa-transform="grow-8 down-11"></i>
+							  <i class="fab fa-linkedin-in"></i>
 						</a>
 
 						<a class="button icon blue" target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello">
-						  <i class="fas fa-envelope" data-fa-transform="grow-8 down-12"></i>
+						  <i class="fas fa-envelope" ></i>
 						</a>
 
 						<a class="button icon red" target="_blank" href="https://www.last.fm/user/torrobinson">
-						  <i class="fab fa-lastfm" data-fa-transform="grow-8 down-12"></i>
+						  <i class="fab fa-lastfm" ></i>
 						</a>
+
 					</div>
 
 
-					<div>
-						<div class="">
-							<div class="label">Projects:</div>
-						</div>
 
-						<a class="button icon purple-gradient" target="_blank" href="https://www.clunk.app">
-						  <div class="clunk-logo">C</div>
-						</a>
-					</div>
+
+
+
 
 					<!-- End Actual content -->
 
@@ -498,14 +560,12 @@
 	</body>
 	<script>
 		// On click
+		var url ="https://www.torrobinson.com";
 		document.addEventListener('click', function (event) {
 			var el = event.target;
 
-			if (
-				el.matches('.tab')
-				||
-				el.closest('.tab') !== null
-			){
+			// Handle active tab classes
+			if (el.matches('.tab') ||el.closest('.tab') !== null){
 				var clickedTab = el.closest('.tab');
 
 				// Tab clicked
@@ -516,6 +576,26 @@
 
 				// Make it active
 				clickedTab.classList.add("active");
+
+				tabSwitchedTo(clickedTab.id);
+			}
+
+			// Handle page switching
+			function tabSwitchedTo(id){
+
+				// Update the fake URL
+				var newUrl = id === '' ? url : url + '/' + id;
+				document.getElementsByClassName('url')[0].innerHTML = newUrl;
+
+				// Change page:
+
+				// Deactivate others
+				var pages = document.querySelectorAll('.page');
+				pages.forEach(page => page.style.display = 'none');
+
+				// Show the new one
+				var newPage = document.getElementById('page-' + id);
+				newPage.style.display = 'block';
 			}
 
 		}, false);
