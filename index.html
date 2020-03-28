@@ -45,8 +45,12 @@
 				--pale-blue:  #75b7f4;
 				--white: rgba(255,255,255,1.0);
 				--light-grey: rgba(237,237,237,1.0);
-				--light-grey-darkened: rgba(222, 221, 221, 1.0);
-				--light-grey-darkened-more: rgba(212, 212, 212, 1.0);
+				--darker-grey: rgba(212,212,212,1.0);
+				--darkest-grey: rgba(200,200,200,1.0);
+
+				/* Opacities */
+				--darkened: rgba(0, 0, 0, 0.07);
+				--darkened-more: rgba(0, 0, 0, 0.15);
 
 
 				/* Component Colors */
@@ -54,6 +58,8 @@
 				--window-border-color: var(--white);
 				--toolbar-color: var(--light-grey);
 				--tab-color: var(--light-grey);
+				--inactive-tab-color: var(--darker-grey);
+				--inactive-tab-hover-color: var(--darkest-grey);
 
 				/* Sizes */
 				--window-padding-vert: 27px;
@@ -62,9 +68,10 @@
 
 				--tab-border-radius: 10px;
 				--tab-height: 35px;
-				--tab-holder-offset: 93px;
-				--tab-vertical-offset: 8px;
+				--tab-holder-offset: 97px;
+				--tab-vertical-offset: 7px;
 				--tab-padding: 20px;
+				--tab-font-size: 16px;
 
 
 				--toolbar-height: 48px;
@@ -92,14 +99,20 @@
 				background-color: var(--window-border-color);
 
 				padding: var(--window-padding-vert) var(--window-padding-hor);
+				padding-bottom: 0px;
+
 				border-radius: var(--window-border-radius);
 				width: 600px;
 
+				user-select: none;
+
+				box-shadow: -5px 8px 20px rgba(0, 0, 0, 0.1);
+
 				z-index: 1;
 			}
-			.window-contents{
+			.window-header{
 				position: relative;
-				min-height: calc( var(--window-border-radius) + var(--toolbar-height) - var(--tab-vertical-offset) + var(--window-border-radius) );
+				height: calc( var(--toolbar-height) + var(--tab-height) - var(--tab-vertical-offset));
 			}
 
 
@@ -152,11 +165,16 @@
 				background-color: var(--tab-color);
 				color: var(--text-color);
 
+				font-size: var(--tab-font-size);
+
 				font-weight: bold;
 
 				cursor: pointer;
 
 				z-index: 3;
+			}
+			.tab-holder .tab.active{
+				z-index:5;
 			}
 			.tab-holder .tab .favicon{
 				display: inline-block;
@@ -194,6 +212,57 @@
 							-6px 4px 0 var(--tab-color),
 							-7px 4px 0 var(--tab-color);
 			}
+			.tab-holder .tab:not(:first-child){
+				margin-left: calc(-1 * var(--tab-border-radius));
+			}
+
+			.tab-holder .tab:not(.active){
+				background-color: var(--inactive-tab-color);
+			}
+			.tab-holder .tab:not(.active):before{
+				box-shadow:
+							1px 1px 0 var(--inactive-tab-color),
+							2px 2px 0 var(--inactive-tab-color),
+							3px 3px 0 var(--inactive-tab-color),
+							4px 4px 0 var(--inactive-tab-color),
+							5px 5px 0 var(--inactive-tab-color),
+							6px 6px 0 var(--inactive-tab-color),
+							7px 7px 0 var(--inactive-tab-color);
+			}
+			.tab-holder .tab:not(.active):after{
+				box-shadow:
+							-1px 1px 0 var(--inactive-tab-color),
+							-2px 2px 0 var(--inactive-tab-color),
+							-3px 3px 0 var(--inactive-tab-color),
+							-4px 4px 0 var(--inactive-tab-color),
+							-5px 5px 0 var(--inactive-tab-color),
+							-6px 6px 0 var(--inactive-tab-color),
+							-7px 7px 0 var(--inactive-tab-color);
+			}
+
+			.tab-holder .tab:not(.active):hover{
+				background-color: var(--inactive-tab-hover-color);
+			}
+			.tab-holder .tab:not(.active):hover:before{
+				box-shadow:
+							1px 1px 0 var(--inactive-tab-hover-color),
+							2px 2px 0 var(--inactive-tab-hover-color),
+							3px 3px 0 var(--inactive-tab-hover-color),
+							4px 4px 0 var(--inactive-tab-hover-color),
+							5px 5px 0 var(--inactive-tab-hover-color),
+							6px 6px 0 var(--inactive-tab-hover-color),
+							7px 7px 0 var(--inactive-tab-hover-color);
+			}
+			.tab-holder .tab:not(.active):hover:after{
+				box-shadow:
+							-1px 1px 0 var(--inactive-tab-hover-color),
+							-2px 2px 0 var(--inactive-tab-hover-color),
+							-3px 3px 0 var(--inactive-tab-hover-color),
+							-4px 4px 0 var(--inactive-tab-hover-color),
+							-5px 5px 0 var(--inactive-tab-hover-color),
+							-6px 6px 0 var(--inactive-tab-hover-color),
+							-7px 7px 0 var(--inactive-tab-hover-color);
+			}
 
 
 			/* Toolbar */
@@ -230,14 +299,13 @@
 			}
 			.toolbar-contents .button{
 				cursor: pointer;
-				user-select: none;
 				display: inline-block;
 				font-size: var(--toolbar-button-icon-size);
 			}
 			.toolbar-contents .button:hover::before{
 				content: '';
 				position: absolute;
-				background-color: var(--light-grey-darkened);
+				background-color: var(--darkened);
 				height: calc(var(--toolbar-button-icon-size) + var(--toolbar-item-hover-circle-padding));
 			    width: calc(var(--toolbar-button-icon-size) + var(--toolbar-item-hover-circle-padding));
 			    margin-left: calc(var(--toolbar-item-hover-circle-padding) * -0.5);
@@ -246,11 +314,13 @@
 				z-index: -1;
 			}
 			.toolbar-contents .button:active::before{
-					background-color: var(--light-grey-darkened-more);
+					background-color: var(--darkened-more);
 			}
 
 			.toolbar-contents .address-bar{
 				background-color: white;
+
+				user-select: text;
 
 				height: var(--toolbar-button-icon-size);
 				width: 100%;
@@ -259,19 +329,42 @@
 				border-radius: var(--toolbar-address-bar-border-radius);
 				padding-left: var(--toolbar-address-bar-border-radius);
 				padding-right: var(--toolbar-address-bar-border-radius);
-
 			}
+
+			.toolbar-contents .address-bar .secure{
+				cursor: pointer;
+				display: inline-block;
+				margin-left: 0.5em;
+				margin-right: 0.5em;
+			}
+
+			.toolbar-contents .address-bar .secure:hover{
+				background-color: var(--darkened);
+			}
+
+
+
 
 			/* Window body */
 			.window .window-body{
 				position: relative;
-			    top: calc(var(--tab-vertical-offset) * -1 + var(--toolbar-height));
+				display: inline-block;
+
+
 				left: calc(-1 * var(--window-padding-hor));
 				width: calc(100% + var( --window-padding-hor) + var(--window-padding-hor));
-				margin-bottom: var(--window-border-radius);
+
+				user-select: text;
+
 			    z-index: 3;
+
+
+				border-radius: 0 0 var(--window-border-radius) var(--window-border-radius);
 			}
 
+			.window .window-body .window-padded-content{
+				padding: var(--window-padding-hor);
+			}
 
 
 			.clunk-logo{
@@ -283,7 +376,8 @@
 	</head>
 	<body>
 		<div class="window">
-			<div class="window-contents">
+
+			<div class="window-header">
 				<div class="traffic-lights">
 					<div class="traffic-light red"></div>
 					<div class="traffic-light yellow"></div>
@@ -291,12 +385,28 @@
 				</div>
 
 				<div class="tab-holder">
+
+					<div class="tab">
+						<div class="favicon">
+							<i class="fad fa-home-alt"></i>
+						</div>
+						Home
+					</div>
+
+					<div class="tab active">
+						<div class="favicon">
+							<i class="fad fa-tools"></i>
+						</div>
+						Projects
+					</div>
+
 					<div class="tab">
 						<div class="favicon">
 							<i class="fad fa-rainbow"></i>
 						</div>
-						Tor Robinson
+						LOL
 					</div>
+
 				</div>
 
 				<div class="toolbar">
@@ -314,81 +424,100 @@
 						</div>
 
 						<div class="item address-bar">
+							<div class="secure">
+								<i class="fas fa-lock"></i>
+							</div>
 							http://www.torrobinson.com
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<div class="window-body" style="color: white; background-image: url(https://www.imd.org/contentassets/3637d7c0cafc4e1b84c15cd1b3e03f21/august_2019_tl_1440x990.png?width=800)">
-					Test!
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+			<div class="window-body">
+				<div class="window-padded-content">
+
+					<!-- Actual content -->
+
+					<div class="">
+						I'm a full-stack developer from Edmonton, Canada.
+						Obsessed with: Film, VR, and Twin Peaks.
+					</div>
+
+
+					<div>
+						<div class="">
+							<div class="label">Code:</div>
+						</div>
+
+						<a class="button icon black" target="_blank" href="https://github.com/torrobinson">
+						  <i class="fab fa-github" data-fa-transform="grow-8 down-12"></i>
+						</a>
+
+						<a class="button icon orange" target="_blank" href="https://stackoverflow.com/story/tor">
+						  <i class="fab fa-stack-overflow" data-fa-transform="grow-8 down-10"></i>
+						</a>
+					</div>
+
+
+					<div>
+						<div class="">
+							<div class="label">Social:</div>
+						</div>
+
+						<a class="button icon darkblue" target="_blank" href="https://www.linkedin.com/in/torrobinson/">
+							  <i class="fab fa-linkedin-in" data-fa-transform="grow-8 down-11"></i>
+						</a>
+
+						<a class="button icon blue" target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello">
+						  <i class="fas fa-envelope" data-fa-transform="grow-8 down-12"></i>
+						</a>
+
+						<a class="button icon red" target="_blank" href="https://www.last.fm/user/torrobinson">
+						  <i class="fab fa-lastfm" data-fa-transform="grow-8 down-12"></i>
+						</a>
+					</div>
+
+
+					<div>
+						<div class="">
+							<div class="label">Projects:</div>
+						</div>
+
+						<a class="button icon purple-gradient" target="_blank" href="https://www.clunk.app">
+						  <div class="clunk-logo">C</div>
+						</a>
+					</div>
+
+					<!-- End Actual content -->
+
 				</div>
 			</div>
+
 		</div>
 
-
- <!--
-			<div class="">
-				I'm a full-stack developer from Edmonton, Canada.
-
-				<br/>
-				<br/>
-
-				<div class="button">Test</div>
-
-				<br/>
-				<br/>
-
-				Obsessed with: Film, VR, and Twin Peaks.
-			</div>
-
-
-			<div>
-				<div class="group-header">
-					<div class="label">Code:</div>
-				</div>
-
-				<a class="button icon black" target="_blank" href="https://github.com/torrobinson">
-				  <i class="fab fa-github" data-fa-transform="grow-8 down-12"></i>
-				</a>
-
-				<a class="button icon orange" target="_blank" href="https://stackoverflow.com/story/tor">
-				  <i class="fab fa-stack-overflow" data-fa-transform="grow-8 down-10"></i>
-				</a>
-			</div>
-
-
-			<div>
-				<div class="group-header">
-					<div class="label">Social:</div>
-				</div>
-
-				<a class="button icon darkblue" target="_blank" href="https://www.linkedin.com/in/torrobinson/">
-					  <i class="fab fa-linkedin-in" data-fa-transform="grow-8 down-11"></i>
-				</a>
-
-				<a class="button icon blue" target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello">
-				  <i class="fas fa-envelope" data-fa-transform="grow-8 down-12"></i>
-				</a>
-
-				<a class="button icon red" target="_blank" href="https://www.last.fm/user/torrobinson">
-				  <i class="fab fa-lastfm" data-fa-transform="grow-8 down-12"></i>
-				</a>
-			</div>
-
-
-			<div>
-				<div class="group-header">
-					<div class="label">Projects:</div>
-				</div>
-
-				<a class="button icon purple-gradient" target="_blank" href="https://www.clunk.app">
-				  <div class="clunk-logo">C</div>
-				</a>
-			</div>
-
-		-->
-
-		</div>
 	</body>
+	<script>
+		// On click
+		document.addEventListener('click', function (event) {
+			var el = event.target;
+
+			if (
+				el.matches('.tab')
+				||
+				el.closest('.tab') !== null
+			){
+				var clickedTab = el.closest('.tab');
+
+				// Tab clicked
+
+				// Deactivate others
+				var tabs = document.querySelectorAll('.tab');
+				tabs.forEach(tab => tab.classList.remove('active'));
+
+				// Make it active
+				clickedTab.classList.add("active");
+			}
+
+		}, false);
+	</script>
 </html>
