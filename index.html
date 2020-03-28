@@ -49,6 +49,14 @@
 				--darkest-grey: rgba(200,200,200,1.0);
 				--black: #565656;
 
+				/* Brand Colors */
+				--clunk: #9d00ff;
+				--linkedin: #0077b5;
+				--github: var(--black);
+				--stackoverflow: #f48024;
+				--lastfm: #b90000;
+
+
 				/* Opacities */
 				--darkened: rgba(0, 0, 0, 0.07);
 				--darkened-more: rgba(0, 0, 0, 0.15);
@@ -74,13 +82,14 @@
 				--tab-padding: 20px;
 				--tab-font-size: 16px;
 
-
 				--toolbar-height: 48px;
 				--toolbar-button-icon-size: 25px;
 				--toolbar-padding: var(--window-padding-hor);
 				--toolbar-item-spacing: 25px;
 				--toolbar-item-hover-circle-padding: 12px;
 				--toolbar-address-bar-border-radius: 5px;
+
+				--link-blur-amount: 20px;
 
 				background-color: var(--pale-red);
 				box-shadow: inset 0 0 60px rgba(0,0,0,0.1);
@@ -377,24 +386,31 @@
 				text-decoration: underline;
 			}
 			.page .link{
-				font-size:20px;
-				display: block;
+				font-size: 55px;
+				display: inline-block;
 			}
 
-			.page .link:not(:first-child){
-				margin-top: 17px;
+			.page .link:not(:last-child){
+				margin-right: 1em;
 			}
 
 
 			.clunk-logo{
 				display: inline-block;
 				font-family: 'Baloo Chettan';
-				font-size: 30px;
-				margin-left: 0.1em;
-    			margin-right: 0.15em;
+				font-size: 69px;
+    			margin-right: 0.21em;
 			}
 
 			.totally-center-children{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.horizontally-center-children{
 				width: 100%;
 				height: 100%;
 				display: flex;
@@ -500,27 +516,25 @@
 
 					<!-- Projects -->
 					<div class="page" id="page-code" style="display:none;">
-						<div class="totally-center-children">
+						<div class="horizontally-center-children">
 
 							<div>
-								<div class="link" style="color: #9d00ff;">
-									<div class="clunk-logo">C</div>
-									<a target="_blank" href="https://www.clunk.app">
-										Clunk
+								<div class="link">
+									<a target="_blank" href="https://www.clunk.app" style="color: var(--clunk); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
+										<div class="clunk-logo">C</div>
 									</a>
 								</div>
 
 								<div class="link">
-									<i class="fab fa-fw fa-github"></i>
-									<a target="_blank" href="https://github.com/torrobinson">
-										Github
+
+									<a target="_blank" href="https://github.com/torrobinson" style="color: var(--github); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
+										<i class="fab fa-fw fa-github"></i>
 									</a>
 								</div>
 
-								<div class="link" style="color: #f48024 !important;">
-									<i class="fab fa-fw fa-stack-overflow"></i>
-									<a target="_blank" href="https://stackoverflow.com/story/tor">
-									  Stack Overflow
+								<div class="link">
+									<a target="_blank" href="https://stackoverflow.com/story/tor" style="color: var(--stackoverflow);     text-shadow: 0px 0px var(--link-blur-amount) rgba(244, 128, 36, 0.43);">
+										<i class="fab fa-fw fa-stack-overflow"></i>
 									</a>
 								</div>
 							</div>
@@ -530,17 +544,30 @@
 
 					<!-- Contact -->
 					<div class="page" id="page-contact" style="display:none;">
-						<a class="button icon darkblue" target="_blank" href="https://www.linkedin.com/in/torrobinson/">
-							  <i class="fab fa-linkedin-in"></i>
-						</a>
 
-						<a class="button icon blue" target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello">
-						  <i class="fas fa-envelope" ></i>
-						</a>
+						<div class="horizontally-center-children">
 
-						<a class="button icon red" target="_blank" href="https://www.last.fm/user/torrobinson">
-						  <i class="fab fa-lastfm" ></i>
-						</a>
+							<div>
+								<div class="link">
+									<a target="_blank" href="https://www.linkedin.com/in/torrobinson/" style="color: var(--linkedin); text-shadow: 0px 0px var(--link-blur-amount) rgba(0, 119, 181, 0.4);">
+										<i class="fab fa-fw fa-linkedin-in"></i>
+									</a>
+								</div>
+
+								<div class="link">
+									<a target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello" style="color: var(--black); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
+										<i class="fas fa-fw fa-envelope"></i>
+									</a>
+								</div>
+
+								<div class="link">
+									<a target="_blank" href="https://www.last.fm/user/torrobinson" style="color: var(--lastfm); text-shadow: 0px 0px var(--link-blur-amount) rgba(185, 0, 0, 0.25);">
+										<i class="fab fa-fw fa-lastfm"></i>
+									</a>
+								</div>
+							</div>
+
+						</div>
 
 					</div>
 
