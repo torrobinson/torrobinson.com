@@ -45,6 +45,8 @@
 				--pale-blue:  #75b7f4;
 				--white: rgba(255,255,255,1.0);
 				--light-grey: rgba(237,237,237,1.0);
+				--light-grey-darkened: rgba(222, 221, 221, 1.0);
+				--light-grey-darkened-more: rgba(212, 212, 212, 1.0);
 
 
 				/* Component Colors */
@@ -57,32 +59,37 @@
 				--window-padding-vert: 27px;
 				--window-padding-hor: 30px;
 				--window-border-radius: 17px;
+
 				--tab-border-radius: 10px;
 				--tab-height: 35px;
 				--tab-holder-offset: 93px;
 				--tab-vertical-offset: 8px;
-				--toolbar-height: 38px;
+				--tab-padding: 20px;
+
+
+				--toolbar-height: 48px;
 				--toolbar-button-icon-size: 25px;
 				--toolbar-padding: var(--window-padding-hor);
-				--toolbar-item-spacing: 4px;
+				--toolbar-item-spacing: 25px;
+				--toolbar-item-hover-circle-padding: 12px;
+				--toolbar-address-bar-border-radius: 5px;
 
 				background-color: var(--pale-red);
 				box-shadow: inset 0 0 60px rgba(0,0,0,0.1);
 				font-family: 'Maven Pro', sans-serif;
 			}
 
-			.clickable{
-				cursor: pointer;
+			body{
+				/* Totally the window*/
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
+
 
 			/* Window */
 			.window{
 				background-color: var(--window-border-color);
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				margin-right: -50%;
-				transform: translate(-50%, -50%);
 
 				padding: var(--window-padding-vert) var(--window-padding-hor);
 				border-radius: var(--window-border-radius);
@@ -104,6 +111,7 @@
 
 			.traffic-light{
 				background-color: white;
+				cursor: pointer;
 			    display: inline-block;
 			    height: 15px;
 			    width: 15px;
@@ -135,8 +143,8 @@
 			.tab-holder .tab{
 				position: relative;
 				display: inline-block;
-				padding-left: 20px;
-			    padding-right: 20px;
+				padding-left: var(--tab-padding);
+			    padding-right: var(--tab-padding);
 			    line-height: var(--tab-height);
 				height: var(--tab-height);
 
@@ -146,7 +154,13 @@
 
 				font-weight: bold;
 
+				cursor: pointer;
+
 				z-index: 3;
+			}
+			.tab-holder .tab .favicon{
+				display: inline-block;
+				margin-right: calc(var(--tab-padding) * 0.5);
 			}
 			.tab-holder .tab::before, .tab-holder .tab::after{
 				position: absolute;
@@ -197,20 +211,65 @@
 
 				padding-left: var(--toolbar-padding);
 				padding-right: var(--toolbar-padding);
+
+				z-index: 3;
 			}
 			.toolbar-contents{
 				height: var(--toolbar-height);
 				position: relative;
+
+				display: flex;
+				align-items: center;
 			}
+
 			.toolbar-contents .item{
-				
+				z-index: 5;
 			}
 			.toolbar-contents .item:not(:first-child){
 				margin-left: var(--toolbar-item-spacing);
 			}
 			.toolbar-contents .button{
+				cursor: pointer;
+				user-select: none;
 				display: inline-block;
 				font-size: var(--toolbar-button-icon-size);
+			}
+			.toolbar-contents .button:hover::before{
+				content: '';
+				position: absolute;
+				background-color: var(--light-grey-darkened);
+				height: calc(var(--toolbar-button-icon-size) + var(--toolbar-item-hover-circle-padding));
+			    width: calc(var(--toolbar-button-icon-size) + var(--toolbar-item-hover-circle-padding));
+			    margin-left: calc(var(--toolbar-item-hover-circle-padding) * -0.5);
+			    margin-top: calc(var(--toolbar-item-hover-circle-padding) * -0.5);
+				border-radius: 50%;
+				z-index: -1;
+			}
+			.toolbar-contents .button:active::before{
+					background-color: var(--light-grey-darkened-more);
+			}
+
+			.toolbar-contents .address-bar{
+				background-color: white;
+
+				height: var(--toolbar-button-icon-size);
+				width: 100%;
+
+				line-height: var(--toolbar-button-icon-size);
+				border-radius: var(--toolbar-address-bar-border-radius);
+				padding-left: var(--toolbar-address-bar-border-radius);
+				padding-right: var(--toolbar-address-bar-border-radius);
+
+			}
+
+			/* Window body */
+			.window .window-body{
+				position: relative;
+			    top: calc(var(--tab-vertical-offset) * -1 + var(--toolbar-height));
+				left: calc(-1 * var(--window-padding-hor));
+				width: calc(100% + var( --window-padding-hor) + var(--window-padding-hor));
+				margin-bottom: var(--window-border-radius);
+			    z-index: 3;
 			}
 
 
@@ -226,13 +285,16 @@
 		<div class="window">
 			<div class="window-contents">
 				<div class="traffic-lights">
-					<div class="traffic-light red clickable"></div>
-					<div class="traffic-light yellow clickable"></div>
-					<div class="traffic-light green clickable"></div>
+					<div class="traffic-light red"></div>
+					<div class="traffic-light yellow"></div>
+					<div class="traffic-light green"></div>
 				</div>
 
 				<div class="tab-holder">
-					<div class="tab clickable">
+					<div class="tab">
+						<div class="favicon">
+							<i class="fad fa-rainbow"></i>
+						</div>
 						Tor Robinson
 					</div>
 				</div>
@@ -250,10 +312,16 @@
 						<div class="item button">
 							<i class="fal fa-home-alt"></i>
 						</div>
+
+						<div class="item address-bar">
+							http://www.torrobinson.com
+						</div>
 					</div>
 				</div>
 
-				<div>
+				<div class="window-body" style="color: white; background-image: url(https://www.imd.org/contentassets/3637d7c0cafc4e1b84c15cd1b3e03f21/august_2019_tl_1440x990.png?width=800)">
+					Test!
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 				</div>
 			</div>
 		</div>
