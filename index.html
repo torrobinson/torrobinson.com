@@ -2,8 +2,10 @@
 	<head>
 		<title>Tor Robinson</title>
 		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto|Baloo+Chettan" rel="stylesheet">
-		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/da70cafe30.js" crossorigin="anonymous"></script>
 		<style>
+
+			/* Start Reset */
 			html, body, div, span, applet, object, iframe,
 			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 			a, abbr, acronym, address, big, cite, code,
@@ -13,8 +15,8 @@
 			dl, dt, dd, ol, ul, li,
 			fieldset, form, label, legend,
 			table, caption, tbody, tfoot, thead, tr, th, td,
-			article, aside, canvas, details, embed, 
-			figure, figcaption, footer, header, hgroup, 
+			article, aside, canvas, details, embed,
+			figure, figcaption, footer, header, hgroup,
 			menu, nav, output, ruby, section, summary,
 			time, mark, audio, video {
 				margin: 0;
@@ -23,121 +25,196 @@
 				font-size: 100%;
 				vertical-align: baseline;
 			}
-			article, aside, details, figcaption, figure, 
+			article, aside, details, figcaption, figure,
 			footer, header, hgroup, menu, nav, section {
 				display: block;
 			}
 			body {
 				line-height: 1;
 			}
-			
-			
-			
-			
-			
-			
+			/* End Reset */
+
+
+
 			html{
+
+				/* Colors */
+				--pale-red: #edc4d5;
+				--pale-yellow: #f0d69a;
+				--pale-green: #75bfb2;
+				--pale-blue:  #75b7f4;
+				--white: rgba(255,255,255,1.0);
+				--light-grey: rgba(237,237,237,1.0);
+
+
+				/* Component Colors */
+				--text-color: rgba(0,0,0,0.73);
+				--window-border-color: var(--white);
+				--toolbar-color: var(--light-grey);
+				--tab-color: var(--light-grey);
+
+				/* Sizes */
+				--window-padding-vert: 27px;
+				--window-padding-hor: 30px;
+				--window-border-radius: 17px;
+				--tab-border-radius: 10px;
+				--tab-height: 35px;
+				--tab-holder-offset: 93px;
+				--tab-vertical-offset: 8px;
+				--toolbar-height: 38px;
+				--toolbar-button-icon-size: 25px;
+				--toolbar-padding: var(--window-padding-hor);
+				--toolbar-item-spacing: 4px;
+
+				background-color: var(--pale-red);
 				box-shadow: inset 0 0 60px rgba(0,0,0,0.1);
+				font-family: 'Maven Pro', sans-serif;
 			}
-			#center-container{
-				text-align: center;
+
+			.clickable{
+				cursor: pointer;
+			}
+
+			/* Window */
+			.window{
+				background-color: var(--window-border-color);
 				position: absolute;
 				top: 50%;
 				left: 50%;
 				margin-right: -50%;
 				transform: translate(-50%, -50%);
+
+				padding: var(--window-padding-vert) var(--window-padding-hor);
+				border-radius: var(--window-border-radius);
+				width: 600px;
+
+				z-index: 1;
 			}
-			*{
-				font-family: 'Maven Pro', sans-serif;
+			.window-contents{
+				position: relative;
+				min-height: calc( var(--window-border-radius) + var(--toolbar-height) - var(--tab-vertical-offset) + var(--window-border-radius) );
 			}
-			.one-liner{
-				font-size: 23px;
-				margin-bottom: 14px;
-				margin-top: 20px;
-				line-height: 27px;
+
+
+			/* Traffic Lights */
+			.traffic-lights{
+				text-align: left;
+				margin-top: -10px;
 			}
-			.highlight, a{
-				text-decoration: none;
-				color: rgb(66, 134, 244);
+
+			.traffic-light{
+				background-color: white;
+			    display: inline-block;
+			    height: 15px;
+			    width: 15px;
+			    border-radius: 50%;
+			    margin-right: 5px;
 			}
-			#email-me{
+			.traffic-light.red{
+				background-color: var(--pale-red);
+			}
+			.traffic-light.yellow{
+				background-color: var(--pale-yellow);
+			}
+			.traffic-light.green{
+				background-color: var(--pale-green);
+			}
+
+
+
+			/* Tabs */
+			.tab-holder{
+				position: absolute;
+			    top: calc(var(--tab-vertical-offset) * -1);
+			    left: var(--tab-holder-offset);
+				width: calc(100% - var(--tab-holder-offset));
+
+				z-index: 2;
+			}
+
+			.tab-holder .tab{
+				position: relative;
+				display: inline-block;
+				padding-left: 20px;
+			    padding-right: 20px;
+			    line-height: var(--tab-height);
+				height: var(--tab-height);
+
+				border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0;
+				background-color: var(--tab-color);
+				color: var(--text-color);
+
+				font-weight: bold;
+
+				z-index: 3;
+			}
+			.tab-holder .tab::before, .tab-holder .tab::after{
+				position: absolute;
+				bottom: 0px;
+				width: var(--tab-border-radius);
+				height: var(--tab-border-radius);
+				content: " ";
+				background-color: rgba(0,0,0,0);
+			}
+			.tab-holder .tab::before{
+				left: calc(-1 * var(--tab-border-radius));
+    			border-bottom-right-radius: var(--tab-border-radius);
+				box-shadow:
+							1px 1px 0 var(--tab-color),
+							2px 2px 0 var(--tab-color),
+							3px 3px 0 var(--tab-color),
+							4px 4px 0 var(--tab-color),
+							5px 5px 0 var(--tab-color),
+							6px 6px 0 var(--tab-color),
+							7px 7px 0 var(--tab-color);
+			}
+			.tab-holder .tab::after{
+				right: calc(-1 * var(--tab-border-radius));
+    			border-bottom-left-radius: var(--tab-border-radius);
+				box-shadow:
+							-1px 1px 0 var(--tab-color),
+							-2px 2px 0 var(--tab-color),
+							-3px 3px 0 var(--tab-color),
+							-4px 4px 0 var(--tab-color),
+							-5px 4px 0 var(--tab-color),
+							-6px 4px 0 var(--tab-color),
+							-7px 4px 0 var(--tab-color);
+			}
+
+
+			/* Toolbar */
+			.toolbar{
+				display: inline-block;
+
+				position: absolute;
+				top: calc(var(--tab-height) - var(--tab-vertical-offset));
+				left: calc(var(--window-padding-hor) * -1);
+
+			    height: var(--toolbar-height);
+			    width: calc( 100% + var(--window-padding-hor) *2 - var(--toolbar-padding) - var(--toolbar-padding) );
+
+				background-color: var(--toolbar-color);
+
+				padding-left: var(--toolbar-padding);
+				padding-right: var(--toolbar-padding);
+			}
+			.toolbar-contents{
+				height: var(--toolbar-height);
+				position: relative;
+			}
+			.toolbar-contents .item{
 				
 			}
-			h1{
-				font-family: 'Roboto', sans-serif !important;
-				font-size: 35px;
+			.toolbar-contents .item:not(:first-child){
+				margin-left: var(--toolbar-item-spacing);
 			}
-			.button{
+			.toolbar-contents .button{
 				display: inline-block;
-				text-decoration: none !important;
-				color: white !important;
-				padding:10px;
-				border-radius: 20px;
-				margin:10px;
+				font-size: var(--toolbar-button-icon-size);
+			}
 
-				transition:.2s;
-			}
-			.button.icon{
-				display: inline-block;
-				height: 40px !important;
-				width: 40px !important;
-				padding: 0px;
-			}
-			.button.text{
-				padding-left:15px;
-				padding-right:15px;
-			}
-			.button.blue{
-				box-shadow: 0px 10px 20px rgba(66, 134, 244, 0.2);
-				background-color: rgb(66, 134, 244);
-			}
-			.button.orange{
-				box-shadow: 0px 10px 20px rgba(244, 128, 36, 0.2);
-				background-color: rgb(244, 128, 36);
-			}
-			.button.black{
-				box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-				background-color: rgb(0 ,0 ,0);
-			}
-			.button.red{
-				box-shadow: 0px 10px 20px rgba(185, 0, 0, 0.2);
-				background-color: rgb(185 ,0 ,0);
-			}
-			.button.darkblue{
-				box-shadow: 0px 10px 20px rgba(0, 115, 177, 0.2);
-				background-color: rgb(0, 115, 177);
-			}
-			.button.purple-gradient{
-				box-shadow: 0px 10px 20px rgba(71, 118, 230, 0.4);
-				background: linear-gradient(135deg,#4776e6,#8e54e9);
-			}
-			.button:hover{
-				opacity:1.0;
-			}
-			
-			.group-header{
-				font-weight: bold;
-				margin-top: 25px;
-				position: relative;
-				width: 100%;
-				margin-bottom: 4px;
-			}
-			.group-header .label{
-				width: 79px;
-				background-color: white;
-				margin: 0 auto;
-			}
-			.group-header:before{
-				content: "";
-				position: absolute;
-				left: 0px;
-				top: 9px;
-				display: inline-block;
-				height: 1px;
-				background-color: rgba(0, 0, 0, 0.2);
-				width: 100%;
-				z-index: -1;
-			}
+
+
 			.clunk-logo{
 				font-family: 'Baloo Chettan';
 				font-size: 30px;
@@ -146,55 +223,104 @@
 			</style>
 	</head>
 	<body>
-		<div id="center-container">
-			<h1>Tor Robinson</h1>
-			<p class="one-liner">I'm a developer from Edmonton, Canada. <br/>Obsessed with: Film, VR, and Twin Peaks.</p>
-			
-			<!-- Code -->
+		<div class="window">
+			<div class="window-contents">
+				<div class="traffic-lights">
+					<div class="traffic-light red clickable"></div>
+					<div class="traffic-light yellow clickable"></div>
+					<div class="traffic-light green clickable"></div>
+				</div>
+
+				<div class="tab-holder">
+					<div class="tab clickable">
+						Tor Robinson
+					</div>
+				</div>
+
+				<div class="toolbar">
+					<div class="toolbar-contents">
+						<div class="item button">
+							<i class="fal fa-arrow-left"></i>
+						</div>
+
+						<div class="item button">
+							<i class="fal fa-arrow-right"></i>
+						</div>
+
+						<div class="item button">
+							<i class="fal fa-home-alt"></i>
+						</div>
+					</div>
+				</div>
+
+				<div>
+				</div>
+			</div>
+		</div>
+
+
+ <!--
+			<div class="">
+				I'm a full-stack developer from Edmonton, Canada.
+
+				<br/>
+				<br/>
+
+				<div class="button">Test</div>
+
+				<br/>
+				<br/>
+
+				Obsessed with: Film, VR, and Twin Peaks.
+			</div>
+
+
 			<div>
 				<div class="group-header">
 					<div class="label">Code:</div>
 				</div>
-				
+
 				<a class="button icon black" target="_blank" href="https://github.com/torrobinson">
 				  <i class="fab fa-github" data-fa-transform="grow-8 down-12"></i>
 				</a>
-				
+
 				<a class="button icon orange" target="_blank" href="https://stackoverflow.com/story/tor">
 				  <i class="fab fa-stack-overflow" data-fa-transform="grow-8 down-10"></i>
 				</a>
 			</div>
-			
-			<!-- Social -->
+
+
 			<div>
 				<div class="group-header">
 					<div class="label">Social:</div>
 				</div>
-				
+
 				<a class="button icon darkblue" target="_blank" href="https://www.linkedin.com/in/torrobinson/">
 					  <i class="fab fa-linkedin-in" data-fa-transform="grow-8 down-11"></i>
 				</a>
-				
-				<a class="button icon blue" target="_blank" href=mailto:tor.j.robinson@gmail.com?Subject=Hello">
+
+				<a class="button icon blue" target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello">
 				  <i class="fas fa-envelope" data-fa-transform="grow-8 down-12"></i>
 				</a>
-				
+
 				<a class="button icon red" target="_blank" href="https://www.last.fm/user/torrobinson">
 				  <i class="fab fa-lastfm" data-fa-transform="grow-8 down-12"></i>
 				</a>
 			</div>
-			
-			<!-- Projects -->
+
+
 			<div>
 				<div class="group-header">
 					<div class="label">Projects:</div>
 				</div>
-				
+
 				<a class="button icon purple-gradient" target="_blank" href="https://www.clunk.app">
 				  <div class="clunk-logo">C</div>
 				</a>
 			</div>
-			
+
+		-->
+
 		</div>
 	</body>
 </html>
