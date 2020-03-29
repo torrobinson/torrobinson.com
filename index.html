@@ -2,7 +2,7 @@
 	<head>
 		<title>Tor Robinson</title>
 		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto|Baloo+Chettan" rel="stylesheet">
-		<link rel="stylesheet" href="./styles.css">
+		<link rel="stylesheet" href="./styles.css?v=1">
 	</head>
 	<body class="totally-center-children">
 		<div class="window"
@@ -48,15 +48,11 @@
 
 				<div class="toolbar">
 					<div class="toolbar-contents">
-						<div class="item button">
+						<div class="item button" onclick="browser.events.buttons.backPressed()">
 							<i class="fal fa-arrow-left"></i>
 						</div>
 
-						<div class="item button">
-							<i class="fal fa-arrow-right"></i>
-						</div>
-
-						<div class="item button">
+						<div class="item button" onclick="browser.events.buttons.homePressed()">
 							<i class="fal fa-home-alt"></i>
 						</div>
 
@@ -64,7 +60,7 @@
 							<div class="secure">
 								<i class="fas fa-lock"></i>
 							</div>
-							<span class="url"></span>
+							<input type="text" class="url" />
 						</div>
 					</div>
 				</div>
@@ -185,7 +181,7 @@
 	<script defer  src="https://kit.fontawesome.com/da70cafe30.js" crossorigin="anonymous"></script>
 
 	<!-- Out custom scripts -->
-	<script src="./scripts.js"></script>
+	<script src="./scripts.js?v-1"></script>
 
 	<!-- tiltjs third party library -->
 	<script src="vanilla-tilt.min.js"></script>
