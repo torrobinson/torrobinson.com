@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Tor Robinson</title>
+		<meta charset="utf-8">
 		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto|Baloo+Chettan" rel="stylesheet">
 		<link rel="stylesheet" href="./styles.css?v=1.2">
 	</head>
@@ -16,9 +17,9 @@
 
 			<div class="window-header">
 				<div class="traffic-lights">
-					<div class="traffic-light red"></div>
-					<div class="traffic-light yellow"></div>
-					<div class="traffic-light green"></div>
+					<div class="traffic-light red" onclick="browser.functions.shake();"></div>
+					<div class="traffic-light yellow" onclick="document.body.style.zoom = 1.0;"></div>
+					<div class="traffic-light green" onclick="document.body.style.zoom = 1.75;"></div>
 				</div>
 
 				<div class="tab-holder">
@@ -37,16 +38,16 @@
 						Code
 					</div>
 
-					<div class="tab" id="contact">
+					<div class="tab" id="social">
 						<div class="favicon">
-							<i class="fad fa-envelope"></i>
+							<i class="fad fa-comment"></i>
 						</div>
-						Contact
+						Social
 					</div>
 
 					<div class="tab" id="custom" style="display:none;">
 						<div class="favicon">
-							<i class="fad fa-globe"></i>
+							<i class="fad fa-exclamation-triangle"></i>
 						</div>
 						404
 					</div>
@@ -67,7 +68,7 @@
 							<div class="secure">
 								<i class="fas fa-lock"></i>
 							</div>
-							<input type="text" class="url" />
+							<input type="text" class="url" spellcheck="false"/>
 						</div>
 					</div>
 				</div>
@@ -145,8 +146,8 @@
 						</div>
 					</div>
 
-					<!-- Contact -->
-					<div class="page" id="page-contact" style="display:none;">
+					<!-- Social -->
+					<div class="page" id="page-social" style="display:none;">
 
 						<div class="horizontally-center-children">
 

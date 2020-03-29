@@ -18,7 +18,7 @@ var helpers = {
 // Browser
 var browser = {
     rootUrl: "https://www.torrobinson.com",
-    supportedIds: ['home','code','contact'],
+    supportedIds: ['home','code','social'],
     currentUrl: function(){
         if(this.history.length === 0) return null;
         return this.history[this.history.length-1].url
@@ -34,6 +34,12 @@ var browser = {
             });
 
             browser.functions.forceRenderAddressBar();
+        },
+        shake: function(){
+            document.body.classList.add('shake');
+            setTimeout(function(){
+                document.body.classList.remove('shake');
+            }, 500);
         }
     },
     events:{
