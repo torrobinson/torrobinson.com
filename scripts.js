@@ -309,7 +309,7 @@ var themes = {
         html.style.setProperty('--white','rgb(33, 33, 33)');
         html.style.setProperty('--light-grey','rgb(27, 27, 27)');
         html.style.setProperty('--darker-grey','rgb(21, 21, 21)');
-        html.style.setProperty('--darkest-grey','rgb(45, 45, 45)');
+        html.style.setProperty('--darkest-grey','rgb(14, 14, 14)');
         html.style.setProperty('--black','#d0d0d0');
         html.style.setProperty('--address-bar-color','var(--white)');
         html.style.setProperty('--site-background-color','#101010');
