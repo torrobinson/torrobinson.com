@@ -420,7 +420,7 @@ html{
     left: 0px;
     color: var(--pale-blue);
     opacity: 0;
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 .space .star.vis{
     opacity: 1;

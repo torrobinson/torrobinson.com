@@ -59,7 +59,16 @@ var browser = {
             newPage.style.display = 'block';
         },
         enterPressedInAddressBar: function(){
-            alert('enter pressed!');
+            var attemptedUrl = document.getElementsByClassName('url')[0].value;
+
+            if(attemptedUrl.startsWith(browser.rootUrl)){
+                // Internal
+                var pageId = attemptedUrl.replace(browser.rootUrl + '/','');
+                browser.events.tabSwitchedTo(pageId);
+            }
+            else{
+                
+            }
         },
         buttons: {
             homePressed: function(){
@@ -93,7 +102,7 @@ var browser = {
 
 // Stars
 var stars = {
-    starCount: 7,
+    starCount: 8,
     areaWidth: 300,
     areaHeight: 120,
     minDistanceBetweenStars: 50,
@@ -223,6 +232,12 @@ document.addEventListener("DOMContentLoaded", function() {
         // derive it's transition duration and set our cssFadeTime variable which will be used to
         // start star fades exactly before the stars are supposed to die
         stars.cssFadeTime = getComputedStyle(_temp).transitionDuration;
+        if(stars.cssFadeTime.endsWith('s')){
+            stars.cssFadeTime = parseFloat(stars.cssFadeTime.replace('s','')) * 1000;
+        }
+        else{
+            cssFadeTime = parseInt(cssFadeTime);
+        }
         document.body.removeChild(_temp);
 
         // Actually start to spawn the stars. They will loop themselves.
