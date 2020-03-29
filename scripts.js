@@ -84,9 +84,11 @@ function isTooCloseToExistingPoints(x, y, minimumDistance){
 
 // Create the star animations
 var space = document.getElementsByClassName('space')[0];
-var maxX = 250;
+var maxX = 300;
 var maxY = 120;
-var minDistanceBetweenStars = 75;
+var minDistanceBetweenStars = 50;
+var cssFadeTime = 0;
+
 
 function createStar(){
     var star = document.createElement('i');
@@ -94,7 +96,7 @@ function createStar(){
     star.classList.add('star');
     star.classList.add('fad');
     star.classList.add('fa-star-christmas');
-    star.classList.add('vis');
+
 
     var depth = randomBetween(20,60);
     star.style.transform =  'translateZ('+depth+'px)';
@@ -128,15 +130,24 @@ function createStar(){
         top
     );
 
+    // Wait 100 ms unitl it's on screen and then throw the 'vis' class on it to beging the css opacity transition
+    setTimeout(function(){
+        star.classList.add('vis');
+    }, 10);
+
+    // Start the countdown to death
     countdownToDeath(star, function(){
         removePoint(id);
         star = createStar();
     });
+
     return star;
 }
 
 function countdownToDeath(star, onDeath){
     var lifetime = randomBetween(500,10000);
+
+    // Start a countdown
     setTimeout(function(){
         // How to "kill" the star
         space.removeChild(star);
@@ -144,17 +155,36 @@ function countdownToDeath(star, onDeath){
         // Death callback which spawns a new one
         onDeath();
     }, lifetime);
+
+    // Start another counter X milleseconds before hand to apply CSS transition
+    setTimeout(function(){
+        star.classList.remove('vis');
+    }, lifetime - cssFadeTime);
 }
 
 
 // Wait for page total load
 document.addEventListener("DOMContentLoaded", function() {
-    // Actually spawn the stars
-    var starCount = 7;
-    for(var x = 0; x < starCount; x++){
-        var star = createStar();
-    }
 
-    // Set default starting url
-    setUrl(currentUrl);
+    // To ensure we know the actual fade time of our stars from code, build and render one
+    var _temp = document.createElement('div');
+    _temp.classList.add('star');
+    document.body.appendChild(_temp);
+    setTimeout(function() {
+        // And now that a repaint has been done and we can assume the dummy-star is on screen,
+        // derive it's transition duration and set our cssFadeTime variable which will be used to
+        // start star fades exactly before the stars are supposed to die
+        cssFadeTime = getComputedStyle(_temp).transitionDuration;
+        document.body.removeChild(_temp);
+
+        // Actually spawn the stars
+        var starCount = 7;
+        for(var x = 0; x < starCount; x++){
+            var star = createStar();
+        }
+
+        // Set default starting url
+        setUrl(currentUrl);
+
+    }, 0);
 });

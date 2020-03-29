@@ -399,14 +399,14 @@ html{
 /* Space */
 .space{
     position: relative;
-    width: 250px;
+    width: 300px;
 }
-.space .star{
+.star{
     top: 0px;
     left: 0px;
     color: var(--pale-blue);
     opacity: 0;
-    transition: opacity 3ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
 }
 .space .star.vis{
     opacity: 1;
