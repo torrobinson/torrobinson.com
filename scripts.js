@@ -83,9 +83,11 @@ function isTooCloseToExistingPoints(x, y, minimumDistance){
 }
 
 // Create the star animations
-var space = document.getElementsByClassName('space')[0];
+var starCount = 7;
 var maxX = 300;
 var maxY = 120;
+
+var space = document.getElementsByClassName('space')[0];
 var minDistanceBetweenStars = 50;
 var cssFadeTime = 0;
 
@@ -171,14 +173,14 @@ document.addEventListener("DOMContentLoaded", function() {
     _temp.classList.add('star');
     document.body.appendChild(_temp);
     setTimeout(function() {
+
         // And now that a repaint has been done and we can assume the dummy-star is on screen,
         // derive it's transition duration and set our cssFadeTime variable which will be used to
         // start star fades exactly before the stars are supposed to die
         cssFadeTime = getComputedStyle(_temp).transitionDuration;
         document.body.removeChild(_temp);
 
-        // Actually spawn the stars
-        var starCount = 7;
+        // Actually start to spawn the stars. They will loop themselves.
         for(var x = 0; x < starCount; x++){
             var star = createStar();
         }
