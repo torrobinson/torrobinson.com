@@ -44,6 +44,13 @@
 						Contact
 					</div>
 
+					<div class="tab" id="custom" style="display:none;">
+						<div class="favicon">
+							<i class="fad fa-globe"></i>
+						</div>
+						404
+					</div>
+
 				</div>
 
 				<div class="toolbar">
@@ -94,10 +101,11 @@
 									color: var(--pale-blue);
 									font-size: 33px;
 									font-weight: bold;
-									margin-top: 7px;
-									margin-bottom:20px;
+									margin-top: 23px;
+									margin-bottom: 20px;
 									text-shadow: -3px 2px 11px rgba(117, 183, 244, 0.42)
 								">
+								<i class="fad fa-user-astronaut"></i>
 								Tor Robinson
 							</div>
 
@@ -167,6 +175,47 @@
 					</div>
 
 
+					<!-- Custom -->
+					<div class="page" id="page-custom" style="display:none;">
+						<h1 style="font-size: 21px;">This site can’t be reached</h1>
+						<br/>
+						<p style="font-size: 14px;"><span style="font-weight: bold;" id="bad-url">google.com</span>'s server IP address could not be found.</p>
+						<br/>
+						<p>Try:</p>
+						<ul style="margin-left: 45px;">
+							<li>Checking the connection</li>
+							<li>Checking the proxy, firewall, and DNS configuration</li>
+							<li>Running Windows Network Diagnostics</li>
+						</ul>
+						<br/>
+						<div style="font-size: 12px; font-family: monospace; font-weight: 100;">ERR_NAME_NOT_RESOLVED</div>
+						<br/><br/><br/>
+
+						<div>
+							<div style="
+								display: inline-block;
+							    background-color: #0f74ff;
+							    color: white;
+							    padding: 8px 16px;
+							    border-radius: 4px;
+							    cursor: pointer;
+								float: left
+							">Reload</div>
+						</div>
+
+						<div>
+							<div style="
+								display: inline-block;
+								color: #5d5d5d;
+								border: 1px solid #5d5d5d;
+								padding: 8px 16px;
+								border-radius: 4px;
+								cursor: pointer;
+								float: right;
+							">Details</div>
+						</div>
+
+					</div>
 
 					<!-- End Actual content -->
 

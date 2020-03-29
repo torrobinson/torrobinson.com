@@ -385,7 +385,7 @@ html{
 .window .window-body .window-padded-content{
     display: flex;
     padding: var(--window-padding-hor);
-    min-height: 220;
+    min-height: 238;
     color: var(--black);
 }
 

@@ -18,6 +18,7 @@ var helpers = {
 // Browser
 var browser = {
     rootUrl: "https://www.torrobinson.com",
+    supportedIds: ['home','code','contact'],
     currentUrl: function(){
         if(this.history.length === 0) return null;
         return this.history[this.history.length-1].url
@@ -36,7 +37,7 @@ var browser = {
         }
     },
     events:{
-        tabSwitchedTo: function(id){
+        tabSwitchedTo: function(id, customUrl){
             // Handle the tabs
 
             // Deactivate others
@@ -48,7 +49,17 @@ var browser = {
             clickedTab.classList.add("active");
 
             // Update the fake URL
-            browser.functions.setUrl(id === '' ? browser.rootUrl : browser.rootUrl + '/' + id);
+            if(id !== 'custom'){
+                browser.functions.setUrl(id === '' ? browser.rootUrl : browser.rootUrl + '/' + id);
+            }
+            else if(customUrl !== undefined){
+                browser.functions.setUrl(customUrl);
+                document.getElementById('bad-url').textContent = customUrl;
+            }
+            else{
+                browser.functions.setUrl('');
+            }
+
 
             // Deactivate other pages
             var pages = document.querySelectorAll('.page');
@@ -61,13 +72,19 @@ var browser = {
         enterPressedInAddressBar: function(){
             var attemptedUrl = document.getElementsByClassName('url')[0].value;
 
-            if(attemptedUrl.startsWith(browser.rootUrl)){
+            if(
+                attemptedUrl.startsWith(browser.rootUrl)
+                &&
+                browser.supportedIds.includes(attemptedUrl.replace(browser.rootUrl + '/',''))
+            ){
                 // Internal
                 var pageId = attemptedUrl.replace(browser.rootUrl + '/','');
                 browser.events.tabSwitchedTo(pageId);
             }
             else{
-                
+                var tab = document.querySelectorAll('.tab[id="custom"]')[0];
+                tab.style.display = 'inline-block';
+                browser.events.tabSwitchedTo('custom', attemptedUrl);
             }
         },
         buttons: {
@@ -86,8 +103,17 @@ var browser = {
                     browser.history.pop();
 
                     // Parse page Id and navigate
-                    var pageId = urlToGoTo.replace(browser.rootUrl + '/','');
-                    browser.events.tabSwitchedTo(pageId);
+                    if(
+                        urlToGoTo.startsWith(browser.rootUrl)
+                        &&
+                        browser.supportedIds.includes(urlToGoTo.replace(browser.rootUrl + '/',''))
+                    ){
+                        var pageId = urlToGoTo.replace(browser.rootUrl + '/','');
+                        browser.events.tabSwitchedTo(pageId);
+                    }
+                    else{
+                        browser.events.tabSwitchedTo('custom', urlToGoTo);
+                    }
                 }
             },
         }
