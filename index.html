@@ -3,7 +3,7 @@
 		<title>Tor Robinson</title>
 		<meta charset="utf-8">
 		<link href="https://fonts.googleapis.com/css?family=Maven+Pro|Roboto|Baloo+Chettan" rel="stylesheet">
-		<link rel="stylesheet" href="./styles.css?v=1.2">
+		<link rel="stylesheet" href="./styles.css?v=1.3">
 	</head>
 	<body class="totally-center-children">
 		<div class="window"
@@ -75,151 +75,153 @@
 			</div>
 
 			<div class="window-body">
-				<div class="window-padded-content">
+				<div class='window-unpadded-content'>
+					<div class="window-padded-content">
+						<!-- Actual content -->
 
-					<!-- Actual content -->
+						<!-- Home -->
+						<div class="page" id="page-home">
 
-					<!-- Home -->
-					<div class="page" id="page-home">
+							<center>
 
-						<center>
+								<div class="space">
+									<i class="fad fa-planet-ringed z-high"
+									   style="
+									   			font-size: 120px;
+												color: var(--blue);
+												--fa-secondary-color: var(--blue-secondary);
+												--fa-secondary-opacity: 1.0;
+												text-shadow: -3px 2px 5px var(--blue-glow);
+											 ">
+									</i>
+									<i class="star fad fa-star-christmas"></i>
+								</div>
+								<div
+									class="z-low"
+								 	style="
+										color: var(--blue);
+										font-size: 33px;
+										font-weight: bold;
+										margin-top: 23px;
+										margin-bottom: 20px;
+										text-shadow: -3px 2px 11px var(--blue-glow)
+									">
+									<i class="fad fa-user-astronaut"></i>
+									Tor Robinson
+								</div>
 
-							<div class="space">
-								<i class="fad fa-planet-ringed z-high"
-								   style="
-								   			font-size: 120px;
-											color: var(--pale-blue);
-											--fa-secondary-color: rgb(200,226,251);
-											--fa-secondary-opacity: 1.0;
-											text-shadow: -3px 2px 5px rgba(117, 183, 244, 0.52);
-										 ">
-								</i>
-								<i class="star fad fa-star-christmas"></i>
+								 <p style="line-height: 20px;">
+									 I'm a full-stack developer from Edmonton, Alberta. <br/>
+									 Obsessed with: Code, Film, VR, and Twin Peaks.
+								 </p>
+
+						 	</center>
+						</div>
+
+						<!-- Projects -->
+						<div class="page" id="page-code" style="display:none;">
+							<div class="horizontally-center-children">
+
+								<div>
+									<div class="link">
+
+										<a target="_blank" href="https://github.com/torrobinson" style="color: var(--github); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
+											<i class="fab fa-fw fa-github"></i>
+										</a>
+									</div>
+
+									<div class="link">
+										<a target="_blank" href="https://stackoverflow.com/story/tor" style="color: var(--stackoverflow);     text-shadow: 0px 0px var(--link-blur-amount) rgba(244, 128, 36, 0.43);">
+											<i class="fab fa-fw fa-stack-overflow"></i>
+										</a>
+									</div>
+
+									<div class="link">
+										<a target="_blank" href="https://www.clunk.app" style="color: var(--clunk); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
+											<div class="clunk-logo">C</div>
+										</a>
+									</div>
+								</div>
+
 							</div>
-							<div
-								class="z-low"
-							 	style="
-									color: var(--pale-blue);
-									font-size: 33px;
-									font-weight: bold;
-									margin-top: 23px;
-									margin-bottom: 20px;
-									text-shadow: -3px 2px 11px rgba(117, 183, 244, 0.42)
-								">
-								<i class="fad fa-user-astronaut"></i>
-								Tor Robinson
+						</div>
+
+						<!-- Social -->
+						<div class="page" id="page-social" style="display:none;">
+
+							<div class="horizontally-center-children">
+
+								<div>
+									<div class="link">
+										<a target="_blank" href="https://www.linkedin.com/in/torrobinson/" style="color: var(--linkedin); text-shadow: 0px 0px var(--link-blur-amount) rgba(0, 119, 181, 0.4);">
+											<i class="fab fa-fw fa-linkedin-in"></i>
+										</a>
+									</div>
+
+									<div class="link">
+										<a target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello" style="color: var(--black); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
+											<i class="fas fa-fw fa-envelope"></i>
+										</a>
+									</div>
+
+									<div class="link">
+										<a target="_blank" href="https://www.last.fm/user/torrobinson" style="color: var(--lastfm); text-shadow: 0px 0px var(--link-blur-amount) rgba(185, 0, 0, 0.25);">
+											<i class="fab fa-fw fa-lastfm"></i>
+										</a>
+									</div>
+								</div>
+
 							</div>
 
-							 <p style="line-height: 20px;">
-								 I'm a full-stack developer from Edmonton, Alberta. <br/>
-								 Obsessed with: Code, Film, VR, and Twin Peaks.
-							 </p>
+						</div>
 
-					 	</center>
-					</div>
 
-					<!-- Projects -->
-					<div class="page" id="page-code" style="display:none;">
-						<div class="horizontally-center-children">
+						<!-- Custom -->
+						<div class="page" id="page-custom" style="display:none;">
+							<h1 style="font-size: 21px;">This site can&rsquo;t be reached</h1>
+							<br/>
+							<p style="font-size: 14px;"><span style="font-weight: bold;" id="bad-url">google.com</span>'s server IP address could not be found.</p>
+							<br/>
+							<p>Try:</p>
+							<ul style="margin-left: 45px;">
+								<li>Checking the connection</li>
+								<li>Checking the proxy, firewall, and DNS configuration</li>
+								<li>Running Windows Network Diagnostics</li>
+							</ul>
+							<br/>
+							<div style="font-size: 12px; font-family: monospace; font-weight: 100;">ERR_NAME_NOT_RESOLVED</div>
+							<select id="theme-select"></select>
+							<br/><br/><br/>
 
 							<div>
-								<div class="link">
-
-									<a target="_blank" href="https://github.com/torrobinson" style="color: var(--github); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
-										<i class="fab fa-fw fa-github"></i>
-									</a>
-								</div>
-
-								<div class="link">
-									<a target="_blank" href="https://stackoverflow.com/story/tor" style="color: var(--stackoverflow);     text-shadow: 0px 0px var(--link-blur-amount) rgba(244, 128, 36, 0.43);">
-										<i class="fab fa-fw fa-stack-overflow"></i>
-									</a>
-								</div>
-
-								<div class="link">
-									<a target="_blank" href="https://www.clunk.app" style="color: var(--clunk); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
-										<div class="clunk-logo">C</div>
-									</a>
-								</div>
+								<div style="
+									display: inline-block;
+								    background-color: var(--blue);
+								    color: var(--white);
+								    padding: 8px 16px;
+								    border-radius: 4px;
+								    cursor: pointer;
+									float: left
+								">Reload</div>
 							</div>
-
-						</div>
-					</div>
-
-					<!-- Social -->
-					<div class="page" id="page-social" style="display:none;">
-
-						<div class="horizontally-center-children">
 
 							<div>
-								<div class="link">
-									<a target="_blank" href="https://www.linkedin.com/in/torrobinson/" style="color: var(--linkedin); text-shadow: 0px 0px var(--link-blur-amount) rgba(0, 119, 181, 0.4);">
-										<i class="fab fa-fw fa-linkedin-in"></i>
-									</a>
-								</div>
-
-								<div class="link">
-									<a target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello" style="color: var(--black); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
-										<i class="fas fa-fw fa-envelope"></i>
-									</a>
-								</div>
-
-								<div class="link">
-									<a target="_blank" href="https://www.last.fm/user/torrobinson" style="color: var(--lastfm); text-shadow: 0px 0px var(--link-blur-amount) rgba(185, 0, 0, 0.25);">
-										<i class="fab fa-fw fa-lastfm"></i>
-									</a>
-								</div>
+								<div style="
+									display: inline-block;
+									color: #5d5d5d;
+									border: 1px solid #5d5d5d;
+									padding: 8px 16px;
+									border-radius: 4px;
+									cursor: pointer;
+									float: right;
+								">Details</div>
 							</div>
 
 						</div>
 
-					</div>
-
-
-					<!-- Custom -->
-					<div class="page" id="page-custom" style="display:none;">
-						<h1 style="font-size: 21px;">This site can&rsquo;t be reached</h1>
-						<br/>
-						<p style="font-size: 14px;"><span style="font-weight: bold;" id="bad-url">google.com</span>'s server IP address could not be found.</p>
-						<br/>
-						<p>Try:</p>
-						<ul style="margin-left: 45px;">
-							<li>Checking the connection</li>
-							<li>Checking the proxy, firewall, and DNS configuration</li>
-							<li>Running Windows Network Diagnostics</li>
-						</ul>
-						<br/>
-						<div style="font-size: 12px; font-family: monospace; font-weight: 100;">ERR_NAME_NOT_RESOLVED</div>
-						<br/><br/><br/>
-
-						<div>
-							<div style="
-								display: inline-block;
-							    background-color: #0f74ff;
-							    color: white;
-							    padding: 8px 16px;
-							    border-radius: 4px;
-							    cursor: pointer;
-								float: left
-							">Reload</div>
-						</div>
-
-						<div>
-							<div style="
-								display: inline-block;
-								color: #5d5d5d;
-								border: 1px solid #5d5d5d;
-								padding: 8px 16px;
-								border-radius: 4px;
-								cursor: pointer;
-								float: right;
-							">Details</div>
-						</div>
+						<!-- End Actual content -->
 
 					</div>
-
-					<!-- End Actual content -->
-
 				</div>
 			</div>
 
@@ -231,7 +233,7 @@
 	<script defer  src="https://kit.fontawesome.com/da70cafe30.js" crossorigin="anonymous"></script>
 
 	<!-- Out custom scripts -->
-	<script src="./scripts.js?v=1.2"></script>
+	<script src="./scripts.js?v=1.3"></script>
 
 	<!-- tiltjs third party library -->
 	<script src="vanilla-tilt.min.js"></script>

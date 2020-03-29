@@ -291,3 +291,55 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }, 0);
 });
+
+
+var defaultColorScheme = document.documentElement.style;
+var themes = {
+    pale: function(){
+        document.documentElement.style = defaultColorScheme;
+    },
+    dark: function(){
+        var html = document.documentElement;
+        html.style.setProperty('--red','#6d4254');
+        html.style.setProperty('--yellow','#796433');
+        html.style.setProperty('--green','#346b61');
+        html.style.setProperty('--blue','#007cef');
+        html.style.setProperty('--blue-secondary','#024c90');
+        html.style.setProperty('--blue-glow','rgb(12, 91, 165)');
+        html.style.setProperty('--white','rgb(33, 33, 33)');
+        html.style.setProperty('--light-grey','rgb(27, 27, 27)');
+        html.style.setProperty('--darker-grey','rgb(21, 21, 21)');
+        html.style.setProperty('--darkest-grey','rgb(45, 45, 45)');
+        html.style.setProperty('--black','#d0d0d0');
+        html.style.setProperty('--address-bar-color','var(--white)');
+        html.style.setProperty('--site-background-color','#101010');
+    },
+    vivid: function(){
+        var html = document.documentElement;
+        html.style.setProperty('--red','#ff006a');
+        html.style.setProperty('--yellow','#ffb200');
+        html.style.setProperty('--green','#00ffd2');
+        html.style.setProperty('--blue','#0085ff');
+        html.style.setProperty('--blue-glow','rgba(117, 183, 244, 0.25)');
+        html.style.setProperty('--blue-secondary','var(--red)');
+        html.style.setProperty('--white','rgb(255, 255, 255)');
+        html.style.setProperty('--light-grey','rgba(237,237,237,1.0)');
+        html.style.setProperty('--darker-grey','rgba(212,212,212,1.0)');
+        html.style.setProperty('--darkest-grey','rgba(200,200,200,1.0)');
+        html.style.setProperty('--black','#565656');
+        html.style.setProperty('--address-bar-color','var(--white)');
+        html.style.setProperty('--site-background-color','var(--red)');
+    }
+};
+
+// Set a theme picker dropdown
+var themeNames = Object.getOwnPropertyNames(themes);
+var themeDropdown = document.getElementById('theme-select');
+themeNames.forEach(themeName => {
+    themeDropdown.options[themeDropdown.options.length] = new Option(themeName.charAt(0).toUpperCase() + themeName.slice(1),themeName);
+});
+document.addEventListener('input', function (event) {
+	if (event.target.id === 'theme-select'){
+        eval('themes.' + themeDropdown.value + '();');
+    }
+}, false);
