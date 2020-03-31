@@ -343,3 +343,18 @@ document.addEventListener('input', function (event) {
         eval('themes.' + themeDropdown.value + '();');
     }
 }, false);
+
+function changeToDefaultTheme(){
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // dark mode
+        themes.dark();
+    }
+    else{
+        themes.pale();
+    }
+}
+
+changeToDefaultTheme();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    changeToDefaultTheme();
+});
