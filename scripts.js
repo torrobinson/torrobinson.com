@@ -303,8 +303,8 @@ var themes = {
         html.style.setProperty('--red','#ff5d52');
         html.style.setProperty('--yellow','#f8b02a');
         html.style.setProperty('--green','#17bc44');
-        html.style.setProperty('--blue','#491fe4');
-        html.style.setProperty('--blue-secondary','#714aff');
+        html.style.setProperty('--blue','var(--black)');
+        html.style.setProperty('--blue-secondary','#a4b9d4');
         html.style.setProperty('--blue-glow','rgba(116, 79, 255, 0.23)');
         html.style.setProperty('--white','#181c27');
         html.style.setProperty('--light-grey','#1d2331');
