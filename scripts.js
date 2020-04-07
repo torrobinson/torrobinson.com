@@ -300,19 +300,34 @@ var themes = {
     },
     dark: function(){
         var html = document.documentElement;
-        html.style.setProperty('--red','#6d4254');
-        html.style.setProperty('--yellow','#796433');
-        html.style.setProperty('--green','#346b61');
-        html.style.setProperty('--blue','#007cef');
-        html.style.setProperty('--blue-secondary','#024c90');
-        html.style.setProperty('--blue-glow','rgb(12, 91, 165)');
-        html.style.setProperty('--white','rgb(33, 33, 33)');
-        html.style.setProperty('--light-grey','rgb(27, 27, 27)');
-        html.style.setProperty('--darker-grey','rgb(21, 21, 21)');
-        html.style.setProperty('--darkest-grey','rgb(14, 14, 14)');
-        html.style.setProperty('--black','#d0d0d0');
+        html.style.setProperty('--red','#ff5d52');
+        html.style.setProperty('--yellow','#f8b02a');
+        html.style.setProperty('--green','#17bc44');
+        html.style.setProperty('--blue','#491fe4');
+        html.style.setProperty('--blue-secondary','#714aff');
+        html.style.setProperty('--blue-glow','rgba(116, 79, 255, 0.23)');
+        html.style.setProperty('--white','#181c27');
+        html.style.setProperty('--light-grey','#1d2331');
+        html.style.setProperty('--darker-grey','#13171f');
+        html.style.setProperty('--darkest-grey','#141821');
+        html.style.setProperty('--black','#8196b1');
         html.style.setProperty('--address-bar-color','var(--white)');
-        html.style.setProperty('--site-background-color','#101010');
+        html.style.setProperty('--site-background-color','linear-gradient(135deg, #250e7a 0%,#8755c8 100%)');
+        html.style.setProperty('--toolbar-color','var(--light-grey)');
+        html.style.setProperty('--toolbar-text-color','var(--black)');
+        html.style.setProperty('--tab-color','var(--light-grey)');
+        html.style.setProperty('--tab-text-color','var(--black)');
+        html.style.setProperty('--window-border-color','var(--white)');
+        html.style.setProperty('--window-body-color','var(--white)');
+
+        html.style.setProperty('--window-border-radius','17px');
+        html.style.setProperty('--tab-border-radius','10px');
+        html.style.setProperty('--tab-height','35px');
+        html.style.setProperty('--tab-font-size','16px');
+        html.style.setProperty('--tab-padding','20px');
+        html.style.setProperty('--toolbar-address-bar-border-radius','5px');
+        html.style.setProperty('--traffic-light-top-margin','-10px');
+        html.style.setProperty('--inactive-tab-hover-color','var(--darkest-grey)');
     },
     vivid: function(){
         var html = document.documentElement;
@@ -329,6 +344,58 @@ var themes = {
         html.style.setProperty('--black','#565656');
         html.style.setProperty('--address-bar-color','var(--white)');
         html.style.setProperty('--site-background-color','var(--red)');
+        html.style.setProperty('--toolbar-color','var(--light-grey)');
+        html.style.setProperty('--toolbar-text-color','var(--black)');
+        html.style.setProperty('--tab-color','var(--light-grey)');
+        html.style.setProperty('--tab-text-color','var(--black)');
+        html.style.setProperty('--window-border-color','#c7cdd2');
+        html.style.setProperty('--window-body-color','var(--white)');
+
+
+        html.style.setProperty('--window-border-radius','0px');
+        html.style.setProperty('--tab-border-radius','5px');
+        html.style.setProperty('--tab-height','32px');
+        html.style.setProperty('--tab-font-size','14px');
+        html.style.setProperty('--tab-padding','20px');
+        html.style.setProperty('--toolbar-address-bar-border-radius','3px');
+        html.style.setProperty('--traffic-light-top-margin','-14px');
+        html.style.setProperty('--inactive-tab-hover-color','var(--darkest-grey)');
+    },
+    blue: function(){
+        var html = document.documentElement;
+        html.style.setProperty('--red','#ff5d52');
+        html.style.setProperty('--yellow','#f8b02a');
+        html.style.setProperty('--green','#17bc44');
+        html.style.setProperty('--white','rgb(255, 255, 255)');
+        html.style.setProperty('--black','#3f4752');
+        html.style.setProperty('--blue','#439cfe');
+        html.style.setProperty('--address-bar-color','var(--white)');
+        html.style.setProperty('--toolbar-color','var(--blue)');
+        html.style.setProperty('--toolbar-text-color','#f7f7f7');
+        html.style.setProperty('--tab-color','var(--blue)');
+        html.style.setProperty('--tab-text-color','var(--white)');
+        html.style.setProperty('--darker-grey','#208aff');
+        html.style.setProperty('--window-border-color','#208aff');
+        html.style.setProperty('--window-body-color','var(--white)');
+
+        html.style.setProperty('--window-border-radius','25px');
+        html.style.setProperty('--tab-border-radius','20px');
+        html.style.setProperty('--tab-height','40px');
+        html.style.setProperty('--tab-font-size','14px');
+        html.style.setProperty('--tab-padding','25px');
+        html.style.setProperty('--toolbar-address-bar-border-radius','10px');
+        html.style.setProperty('--traffic-light-top-margin','-6px');
+        html.style.setProperty('--inactive-tab-hover-color','#4ba9ff');
+
+
+
+        html.style.setProperty('--blue-glow','rgba(117, 183, 244, 0.25)');
+        html.style.setProperty('--blue-secondary','var(--red)');
+
+        html.style.setProperty('--light-grey','rgba(237,237,237,1.0)');
+        html.style.setProperty('--darkest-grey','rgba(200,200,200,1.0)');
+
+        html.style.setProperty('--site-background-color','linear-gradient(135deg, #99d4ff 0%,#4fb0fd 100%)');
     }
 };
 
