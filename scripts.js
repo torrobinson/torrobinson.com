@@ -411,21 +411,21 @@ document.addEventListener('input', function (event) {
     }
 }, false);
 
-// // Decide on which default theme to use
-// function changeToDefaultTheme(){
-//     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//         // dark mode
-//         themes.dark();
-//     }
-//     else{
-//         themes.pale();
-//     }
-// }
-//
-// // Decide default theme immediately
-// changeToDefaultTheme();
-//
-// // And watch for dark-mode changes to re-evaluate
-// window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-//     changeToDefaultTheme();
-// });
+ // Decide on which default theme to use
+ function changeToDefaultTheme(){
+     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+         // dark mode
+         themes.dark();
+     }
+     else{
+         themes.pale();
+     }
+ }
+
+ // Decide default theme immediately
+ changeToDefaultTheme();
+
+ // And watch for dark-mode changes to re-evaluate
+ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+     changeToDefaultTheme();
+ });
