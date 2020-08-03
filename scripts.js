@@ -1,3 +1,5 @@
+var respectDarkMode = false;
+
 // Helpers
 var helpers = {
     randomBetween: function(min, max) {
@@ -250,7 +252,6 @@ document.addEventListener('click', function (event) {
 }, false);
 
 
-
 // Wait for page total load
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -413,7 +414,7 @@ document.addEventListener('input', function (event) {
 
  // Decide on which default theme to use
  function changeToDefaultTheme(){
-     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+     if (respectDarkMode && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
          // dark mode
          themes.dark();
      }
@@ -426,6 +427,8 @@ document.addEventListener('input', function (event) {
  changeToDefaultTheme();
 
  // And watch for dark-mode changes to re-evaluate
- window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-     changeToDefaultTheme();
- });
+ if(respectDarkMode){
+     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+         changeToDefaultTheme();
+     });
+ }
