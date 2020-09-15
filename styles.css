@@ -469,7 +469,7 @@ select{
 .window .window-body .window-padded-content{
     display: flex;
     padding: var(--window-padding-hor);
-    min-height: 255px;
+    min-height: 260px;
     color: var(--black);
 }
 
