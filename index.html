@@ -8,7 +8,7 @@
 	</head>
 	<body class="totally-center-children">
 		<div class="window">
-			<div class="window-header">
+			<div class="window-header drag-handle">
 				<div class="traffic-lights">
 					<div class="traffic-light red" onclick="browser.functions.shake();"></div>
 					<div class="traffic-light yellow" onclick="document.body.style.zoom = 1.0;"></div>
@@ -232,6 +232,19 @@
 
 	<!-- Font Awesome -->
 	<script defer  src="https://kit.fontawesome.com/da70cafe30.js" crossorigin="anonymous"></script>
+
+	<!-- Dragging -->
+	<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+	<style>
+		.drag-handle{
+			cursor: move;
+		}
+	</style>
+	<script>
+	var draggableWindow = new Draggabilly(document.querySelector('.window'), {
+	  handle: '.drag-handle'
+	});
+	</script>
 
 	<!-- Out custom scripts -->
 	<script src="./scripts.js?v=1.7"></script>
