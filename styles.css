@@ -559,3 +559,16 @@ select{
     top: 0px;
     right: 0px;
 }
+
+
+
+
+.nono-logo{
+    background-image: url('./img/nono.png');
+    height: 52px;
+    width: 54px;
+    background-size: 88px 88px;
+    background-position: center;
+    top: 5px;
+    position: relative;
+}

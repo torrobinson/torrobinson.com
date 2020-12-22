@@ -126,19 +126,26 @@
 								<div>
 									<div class="link">
 
-										<a target="_blank" href="https://github.com/torrobinson" style="color: var(--github); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
+										<a data-tippy-content="<b>GitHub</b>" target="_blank" href="https://github.com/torrobinson" style="color: var(--github); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
 											<i class="fab fa-fw fa-github"></i>
 										</a>
 									</div>
 
 									<div class="link">
-										<a target="_blank" href="https://stackoverflow.com/story/tor" style="color: var(--stackoverflow);     text-shadow: 0px 0px var(--link-blur-amount) rgba(244, 128, 36, 0.43);">
+										<a data-tippy-content="<b>Stack Overflow</b>" target="_blank" href="https://stackoverflow.com/story/tor" style="color: var(--stackoverflow);     text-shadow: 0px 0px var(--link-blur-amount) rgba(244, 128, 36, 0.43);">
 											<i class="fab fa-fw fa-stack-overflow"></i>
 										</a>
 									</div>
 
+
 									<div class="link">
-										<a target="_blank" href="https://www.clunk.app" style="color: var(--clunk); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
+										<a data-tippy-content="<b>nono.land</b><br/>An online multiplayer nonogram client.<br/>Made with Node.js and Socket.io" target="_blank" href="https://nono.land/" style="color: var(--nono); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
+											<div class="nono-logo"></div>
+										</a>
+									</div>
+
+									<div class="link">
+										<a data-tippy-content="<b>clunk</b><br/>A basic to-do app.<br/>Made with Vue.js and Firebase."" target="_blank" href="https://www.clunk.app" style="color: var(--clunk); text-shadow: 0px 0px var(--link-blur-amount) rgba(157, 0, 255, 0.3);">
 											<div class="clunk-logo">C</div>
 										</a>
 									</div>
@@ -154,19 +161,19 @@
 
 								<div>
 									<div class="link">
-										<a target="_blank" href="https://www.linkedin.com/in/torrobinson/" style="color: var(--linkedin); text-shadow: 0px 0px var(--link-blur-amount) rgba(0, 119, 181, 0.4);">
+										<a data-tippy-content="<b>LinkedIn</b>" target="_blank" href="https://www.linkedin.com/in/torrobinson/" style="color: var(--linkedin); text-shadow: 0px 0px var(--link-blur-amount) rgba(0, 119, 181, 0.4);">
 											<i class="fab fa-fw fa-linkedin-in"></i>
 										</a>
 									</div>
 
 									<div class="link">
-										<a target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello" style="color: var(--black); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
+										<a data-tippy-content="<b>Email</b>" target="_blank" href="mailto:tor.j.robinson@gmail.com?Subject=Hello" style="color: var(--black); text-shadow: 0px 0px var(--link-blur-amount) rgba(64, 64, 64, 0.4);">
 											<i class="fas fa-fw fa-envelope"></i>
 										</a>
 									</div>
 
 									<div class="link">
-										<a target="_blank" href="https://www.last.fm/user/torrobinson" style="color: var(--lastfm); text-shadow: 0px 0px var(--link-blur-amount) rgba(185, 0, 0, 0.25);">
+										<a data-tippy-content="<b>Last.fm</b>" target="_blank" href="https://www.last.fm/user/torrobinson" style="color: var(--lastfm); text-shadow: 0px 0px var(--link-blur-amount) rgba(185, 0, 0, 0.25);">
 											<i class="fab fa-fw fa-lastfm"></i>
 										</a>
 									</div>
@@ -244,6 +251,13 @@
 	var draggableWindow = new Draggabilly(document.querySelector('.window'), {
 	  handle: '.drag-handle'
 	});
+	</script>
+
+	<!-- Tooltips -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script>
+		tippy('[data-tippy-content]', {allowHTML: true,});
 	</script>
 
 	<!-- Out custom scripts -->
